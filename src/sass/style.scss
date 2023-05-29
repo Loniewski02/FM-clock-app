@@ -1,0 +1,62 @@
+@use './colors' as *;
+@use './themes' as *;
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	min-height: 100vh;
+	font-family: 'Inter', sans-serif;
+	font-size: 1.6rem;
+	background-color: $white;
+}
+
+.wrapper {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1110px;
+}
+
+.hero-bg,
+.hero-shadow {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+}
+
+.hero-bg {
+	background-image: url('../img/mobile/bg-image-daytime.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	z-index: -6;
+}
+.hero-shadow {
+	background-color: rgba(0, 0, 0, 0.3);
+	z-index: -5;
+}
+
+@media (min-width: 768px) {
+	.hero-bg {
+		background-image: url('../img/tablet/bg-image-daytime.jpg');
+	}
+}
+@media (min-width: 992px) {
+	.hero-bg {
+		background-image: url('../img/desktop/bg-image-daytime.jpg');
+	}
+}
+@media (min-width: 1440px) {
+}
+
+// @import './prefers-color-scheme';

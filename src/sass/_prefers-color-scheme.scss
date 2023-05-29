@@ -1,0 +1,209 @@
+@media (prefers-color-scheme: dark) {
+	.dark-theme {
+		background-color: $black;
+		.nav {
+			&__fonts {
+				color: $white;
+
+				&-list {
+					background-color: $very-dark-gray1;
+					box-shadow: 0 0 20px 2px $purple;
+
+					li {
+						color: $white;
+
+						&:hover {
+							color: $purple;
+						}
+					}
+				}
+			}
+
+			&__mode {
+				&-btn {
+					background-color: $purple;
+
+					&:hover {
+						background-color: $gray;
+					}
+
+					&::before {
+						transform: translateX(140%);
+					}
+				}
+
+				&-img {
+					color: $purple;
+				}
+			}
+		}
+
+		.search {
+			background-color: $very-dark-gray1;
+
+			&__input {
+				color: $white;
+			}
+		}
+
+		.not-found {
+			&__title {
+				color: $white;
+			}
+
+			&__text {
+				color: $gray;
+			}
+		}
+
+		.first-section {
+			&__box {
+				&-word {
+					color: $white;
+				}
+			}
+		}
+
+		.definition {
+			&__title {
+				color: $white;
+
+				span {
+					background-color: $dark-gray;
+				}
+			}
+
+			&__list {
+				&-def {
+					color: $white;
+
+					&--example {
+						color: $gray;
+					}
+
+					&::before {
+						background-color: $purple;
+					}
+				}
+			}
+		}
+
+		.footer {
+			&__line {
+				background-color: $dark-gray;
+			}
+
+			&__link {
+				color: $white;
+
+				&:hover {
+					color: $purple;
+				}
+			}
+		}
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	.light-theme {
+		background-color: $white;
+
+		.nav {
+			&__fonts {
+				color: $black;
+
+				&-list {
+					background-color: $white;
+					box-shadow: 0 0 20px 2px $light-gray;
+
+					li {
+						color: $black;
+
+						&:hover {
+							color: $purple;
+						}
+					}
+				}
+			}
+
+			&__mode {
+				&-btn {
+					background-color: $gray;
+
+					&:hover {
+						background-color: $purple;
+					}
+
+					&::before {
+						transform: translateX(0);
+					}
+				}
+
+				&-img {
+					color: $gray;
+				}
+			}
+		}
+
+		.search {
+			background-color: $very-light-gray;
+
+			&__input {
+				color: $black;
+			}
+		}
+
+		.not-found {
+			&__title {
+				color: $black;
+			}
+
+			&__text {
+				color: $gray;
+			}
+		}
+
+		.first-section {
+			&__box {
+				&-word {
+					color: $black;
+				}
+			}
+		}
+
+		.definition {
+			&__title {
+				color: $black;
+
+				span {
+					background-color: $light-gray;
+				}
+			}
+
+			&__list {
+				&-def {
+					color: $very-dark-gray2;
+				}
+			}
+		}
+
+		.footer {
+			&__line {
+				background-color: $light-gray;
+			}
+
+			&__source {
+				color: $gray;
+				border-bottom: 1px solid $gray;
+			}
+
+			&__link {
+				color: $very-dark-gray2;
+
+				&:hover {
+					color: $purple;
+				}
+			}
+		}
+	}
+}
