@@ -30,11 +30,6 @@
 			background-image: url('../img/desktop/bg-image-daytime.jpg');
 		}
 	}
-	@media (min-width: 1200px) {
-		.hero-bg {
-			background-image: url('../img/desktop/bg-image-daytime.jpg');
-		}
-	}
 }
 
 .night-theme {
@@ -63,11 +58,6 @@
 	}
 
 	@media (min-width: 992px) {
-		.hero-bg {
-			background-image: url('../img/desktop/bg-image-nighttime.jpg');
-		}
-	}
-	@media (min-width: 1200px) {
 		.hero-bg {
 			background-image: url('../img/desktop/bg-image-nighttime.jpg');
 		}

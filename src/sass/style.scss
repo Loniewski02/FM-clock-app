@@ -7,6 +7,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	// border: 1px solid red;
 }
 
 html {
@@ -31,20 +32,21 @@ body {
 .hero-shadow {
 	position: absolute;
 	top: 0;
-	left: 0;
-	width: 100%;
+	left: -3px;
+	width: 101vw;
 	height: 100vh;
 }
 
 .hero-bg {
 	background-image: url('../img/mobile/bg-image-daytime.jpg');
-	background-repeat: no-repeat;
-	background-position: center;
 	background-size: cover;
+	background-position: 0 100%;
+	background-repeat: no-repeat;
 	z-index: -6;
 }
+
 .hero-shadow {
-	background-color: rgba(0, 0, 0, 0.3);
+	background-color: rgba(0, 0, 0, 0.4);
 	z-index: -5;
 }
 
@@ -58,11 +60,10 @@ body {
 
 	&__quote {
 		display: grid;
-		// display: none;
 		grid-template-columns: auto auto;
 		column-gap: 1em;
 		row-gap: 0.5em;
-		max-width: 324px;
+		max-width: 330px;
 
 		&-text {
 			grid-column: 1/2;
@@ -73,17 +74,25 @@ body {
 		}
 
 		&-btn {
-			display: flex;
 			grid-column: 2/3;
+			display: flex;
 			align-self: start;
-			padding: 0.2em;
+			padding: 0.5em;
+			width: 35px;
+			height: 35px;
 			background: transparent;
-			border: 2px solid transparent;
+			border: 2px dashed transparent;
+			border-radius: 50%;
 			cursor: pointer;
 			transition: transform 0.5s;
 
 			&:hover {
 				transform: rotate(360deg);
+			}
+
+			&:focus {
+				outline: none;
+				border: 2px dashed $white;
 			}
 		}
 
@@ -163,10 +172,6 @@ body {
 				.app__clock-btn-circle {
 					background-color: #999;
 				}
-
-				.app__clock-btn-circle img {
-					transform: scale(1.2);
-				}
 			}
 
 			&-text {
@@ -188,10 +193,6 @@ body {
 				background-color: $dark-gray;
 				border-radius: 50%;
 				transition: background-color 0.3s;
-
-				img {
-					transition: transform 0.3s;
-				}
 			}
 		}
 	}
@@ -240,7 +241,7 @@ body {
 
 		&__quote {
 			row-gap: 0.8em;
-			max-width: 573px;
+			max-width: 590px;
 
 			&-text {
 				font-size: 1.8rem;
