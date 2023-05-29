@@ -12,29 +12,64 @@
   <title>Frontend Mentor | Clock App</title>
 </head>
 
-<body>
+<body class="day-theme">
 
   <main class="main">
     <div class="hero-bg">
       <div class="hero-shadow"></div>
     </div>
-    <section class="clock">
+    <section class="app wrapper">
 
+      <div class="app__quote">
+        <p class="app__quote-text">“The science of operations, as derived from mathematics more especially, is a
+          science of itself, and has its own abstract truth and value.”</p>
+        <p class="app__quote-author">Ada Lovelace</p>
+        <button aria-label="refresh quote" class="app__quote-btn"><img src="./dist/img/icons/icon-refresh.svg"
+            alt=""></button>
+      </div>
 
+      <div class="app__clock">
+        <div class="app__clock-greeting">
+          <img src="./dist/img/icons/icon-sun.svg" alt="" class="app__clock-greeting-img">
+          <p class="app__clock-greeting-text">good morning<span>, it’s currently</span></p>
+        </div>
+        <div class="app__clock-box">
+          <h2 class="app__clock-time">11:37</h2>
+          <p class="app__clock-period">bst</p>
+        </div>
+        <p class="app__clock-city">in <span>london, uk</span></p>
+        <div tabindex="0" class="app__clock-btn">
+          <span class="app__clock-btn-text">more</span>
+          <div class="app__clock-btn-circle">
+            <img src="./dist/img/icons/icon-arrow-down.svg" alt="">
+          </div>
+        </div>
+      </div>
     </section>
+
+    <artcle class="app-bottom">
+      <div class="wrapper">
+        <div class="app-bottom__box">
+          <h3 class="app-bottom__box-title">current timezone</h3>
+          <p class="app-bottom__box-data timezone">Europe/London</p>
+        </div>
+        <div class="app-bottom__box">
+          <h3 class="app-bottom__box-title">day of the year</h3>
+          <p class="app-bottom__box-data day-of-year">295</p>
+        </div>
+        <div class="app-bottom__box">
+          <h3 class="app-bottom__box-title">day of the week</h3>
+          <p class="app-bottom__box-data day-of-week">5</p>
+        </div>
+        <div class="app-bottom__box">
+          <h3 class="app-bottom__box-title">week number</h3>
+          <p class="app-bottom__box-data week">42</p>
+        </div>
+      </div>
+    </artcle>
   </main>
-  , it's currently
 
-  in
-
-  More
-  Less
-
-  Current timezone
-  Day of the year
-  Day of the week
-  Week number
-
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.11/dist/gsap.min.js"></script>
   <script src="./dist/js/main.min.js"></script>
 </body>
 

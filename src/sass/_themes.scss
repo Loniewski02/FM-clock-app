@@ -1,9 +1,75 @@
 @use './colors' as *;
 
-.light-theme {
-	
+.day-theme {
+	.app-bottom {
+		background-color: rgba(255, 255, 255, 0.75);
+
+		&__box {
+			&-title {
+				color: $dark-gray;
+			}
+
+			&-data {
+				color: $black;
+			}
+		}
+	}
+
+	.hero-bg {
+		background-image: url('../img/mobile/bg-image-daytime.jpg');
+	}
+
+	@media (min-width: 768px) {
+		.hero-bg {
+			background-image: url('../img/tablet/bg-image-daytime.jpg');
+		}
+	}
+
+	@media (min-width: 992px) {
+		.hero-bg {
+			background-image: url('../img/desktop/bg-image-daytime.jpg');
+		}
+	}
+	@media (min-width: 1200px) {
+		.hero-bg {
+			background-image: url('../img/desktop/bg-image-daytime.jpg');
+		}
+	}
 }
 
-.dark-theme {
-	
+.night-theme {
+	.app-bottom {
+		background-color: rgba(0, 0, 0, 0.75);
+
+		&__box {
+			&-title {
+				color: $white;
+			}
+
+			&-data {
+				color: $white;
+			}
+		}
+	}
+
+	.hero-bg {
+		background-image: url('../img/mobile/bg-image-nighttime.jpg');
+	}
+
+	@media (min-width: 768px) {
+		.hero-bg {
+			background-image: url('../img/tablet/bg-image-nighttime.jpg');
+		}
+	}
+
+	@media (min-width: 992px) {
+		.hero-bg {
+			background-image: url('../img/desktop/bg-image-nighttime.jpg');
+		}
+	}
+	@media (min-width: 1200px) {
+		.hero-bg {
+			background-image: url('../img/desktop/bg-image-nighttime.jpg');
+		}
+	}
 }
