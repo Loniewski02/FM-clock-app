@@ -1,6 +1,8 @@
 let showBtn;
 let appSection;
 let refreshQuoteBtn;
+let time;
+let body;
 
 const URL_QUOTE = `https://api.quotable.io/random`;
 
@@ -8,6 +10,8 @@ const prepareDOMElements = () => {
 	showBtn = document.querySelector('.app__clock-btn');
 	appSection = document.querySelector('.app');
 	refreshQuoteBtn = document.querySelector('.app__quote-btn');
+	time = document.querySelector('.app__clock-time');
+	body = document.body;
 };
 
 const prepareDOMEvents = () => {
@@ -58,7 +62,7 @@ const hideDetails = () => {
 async function handleQuote() {
 	const response = await axios.get(URL_QUOTE);
 	try {
-		const quoteText = document.querySelector('.app__quote-text');
+		const quoteText = document.querySelector('.app__quote-text span');
 		const quoteAuthor = document.querySelector('.app__quote-author');
 		quoteText.textContent = response.data.content;
 		quoteAuthor.textContent = response.data.author;
@@ -67,22 +71,30 @@ async function handleQuote() {
 	}
 }
 
-async function getTime() {
-	const response = await axios.get(URL_QUOTE);
-	try {
-		const quoteText = document.querySelector('.app__quote-text');
-		const quoteAuthor = document.querySelector('.app__quote-author');
-		quoteText.textContent = response.data.content;
-		quoteAuthor.textContent = response.data.author;
-	} catch (error) {
-		console.error(error);
+const setTime = () => {
+	const currentTime = new Date();
+
+	const hours = String(currentTime.getHours()).padStart(2, '0');
+	const minutes = String(currentTime.getMinutes()).padStart(2, '0');
+
+	if (hours > 5 && hours < 19) {
+		body.classList.remove('night-theme');
+		body.classList.add('morning-theme');
+	} else {
+		body.classList.remove('morning-theme');
+		body.classList.add('night-theme');
 	}
-}
+
+	time.textContent = `${hours}:${minutes}`;
+
+	requestAnimationFrame(setTime);
+};
 
 const main = () => {
 	prepareDOMElements();
 	prepareDOMEvents();
 	handleQuote();
+	setTime();
 };
 
 document.addEventListener('DOMContentLoaded', main);

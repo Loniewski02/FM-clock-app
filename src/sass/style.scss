@@ -32,8 +32,8 @@ body {
 .hero-shadow {
 	position: absolute;
 	top: 0;
-	left: -3px;
-	width: 101vw;
+	left: 0px;
+	width: 100%;
 	height: 100vh;
 }
 
@@ -46,7 +46,7 @@ body {
 }
 
 .hero-shadow {
-	background-color: rgba(0, 0, 0, 0.4);
+	background-color: rgba(0, 0, 0, 0.5);
 	z-index: -5;
 }
 
