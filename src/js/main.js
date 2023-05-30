@@ -75,27 +75,41 @@ async function setTime() {
 	const response = await axios.get('https://worldtimeapi.org/api/ip');
 	const data = response.data;
 	try {
-		const timezone = document.querySelector('.timezone');
-		const dayOfWeek = document.querySelector('.day-of-week');
-		const dayOfYear = document.querySelector('.day-of-year');
-		const week = document.querySelector('.week');
-		const periood = document.querySelector('.app__clock-period');
-
 		const currentTime = new Date(data.datetime);
 
-		const hours = String(currentTime.getHours()).padStart(2, '0');
+		let hours = String(currentTime.getHours()).padStart(2, '0');
 		const minutes = String(currentTime.getMinutes()).padStart(2, '0');
 
-		if (hours > 5 && hours < 19) {
-			body.classList.remove('night-theme');
+		if (hours >= 5 && hours <= 10) {
+			body.classList.remove('night-theme', 'midday-theme', 'afternoon-theme');
 			body.classList.add('morning-theme');
-		} else {
-			body.classList.remove('morning-theme');
+		} else if (hours > 10 && hours <= 15) {
+			body.classList.remove('night-theme', 'morning-theme', 'afternoon-theme');
+			body.classList.add('midday-theme');
+		} else if (hours > 15 && hours <= 18) {
+			body.classList.remove('night-theme', 'morning-theme', 'midday-theme');
+			body.classList.add('afternoon-theme');
+		} else if (hours > 18 || hours < 5) {
+			body.classList.remove('morning-theme', 'midday-theme', 'afternoon-theme');
 			body.classList.add('night-theme');
 		}
 
 		time.textContent = `${hours}:${minutes}`;
 		requestAnimationFrame(setTime);
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+async function setTimezone() {
+	const response = await axios.get('https://worldtimeapi.org/api/ip');
+	const data = response.data;
+	try {
+		const timezone = document.querySelector('.timezone');
+		const dayOfWeek = document.querySelector('.day-of-week');
+		const dayOfYear = document.querySelector('.day-of-year');
+		const week = document.querySelector('.week');
+		const periood = document.querySelector('.app__clock-period');
 
 		timezone.textContent = data.timezone;
 		dayOfWeek.textContent = data.day_of_week;
@@ -108,11 +122,13 @@ async function setTime() {
 }
 
 async function setLocation() {
-	const response = await axios.get('https://api.ipbase.com/v1/json/');
-	const data = response.data;
+	const response = await axios.get(
+		'https://api.ipbase.com/v2/info?apikey=fPA02BFo3Irtm2C2320d3MGdDloEkD6cKgtDAF4T&ip='
+	);
+	const data = response.data.data;
+	const location = document.querySelector('.app__clock-city span');
 	try {
-		const location = document.querySelector('.app__clock-city span');
-		location.textContent = `${data.country_name}, ${data.country_code}`;
+		location.textContent = `${data.location.country.name}, ${data.location.country.alpha2}`;
 	} catch (error) {
 		console.error(error);
 	}
@@ -122,6 +138,7 @@ const main = () => {
 	prepareDOMElements();
 	prepareDOMEvents();
 	handleQuote();
+	setTimezone();
 	setTime();
 	setLocation();
 };

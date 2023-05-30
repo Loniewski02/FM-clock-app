@@ -32,6 +32,70 @@
 	}
 }
 
+.midday-theme {
+	.app-bottom {
+		background-color: rgba(255, 255, 255, 0.75);
+
+		&__box {
+			&-title {
+				color: $dark-gray;
+			}
+
+			&-data {
+				color: $black;
+			}
+		}
+	}
+
+	.hero-bg {
+		background-image: url('../img/mobile/midday.jpg');
+	}
+
+	@media (min-width: 768px) {
+		.hero-bg {
+			background-image: url('../img/tablet/midday.jpg');
+		}
+	}
+
+	@media (min-width: 992px) {
+		.hero-bg {
+			background-image: url('../img/desktop/midday.jpg');
+		}
+	}
+}
+
+.afternoon-theme {
+	.app-bottom {
+		background-color: rgba(0, 0, 0, 0.75);
+
+		&__box {
+			&-title {
+				color: $white;
+			}
+
+			&-data {
+				color: $white;
+			}
+		}
+	}
+
+	.hero-bg {
+		background-image: url('../img/mobile/afternoon.jpg');
+	}
+
+	@media (min-width: 768px) {
+		.hero-bg {
+			background-image: url('../img/tablet/afternoon.jpg');
+		}
+	}
+
+	@media (min-width: 992px) {
+		.hero-bg {
+			background-image: url('../img/desktop/afternoon.jpg');
+		}
+	}
+}
+
 .night-theme {
 	.app-bottom {
 		background-color: rgba(0, 0, 0, 0.75);
