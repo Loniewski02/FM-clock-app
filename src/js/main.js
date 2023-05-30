@@ -126,7 +126,6 @@ async function setLocation() {
 		location.textContent = `${data.location.country.name}, ${data.location.country.alpha2}`;
 	} catch (error) {
 		console.error(error);
-		location.textContent = `earth`;
 	}
 }
 

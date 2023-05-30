@@ -7,7 +7,6 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	// border: 1px solid red;
 }
 
 html {
@@ -19,7 +18,6 @@ body {
 	font-family: 'Inter', sans-serif;
 	font-size: 1.6rem;
 	background-color: $white;
-	// overflow: hidden;
 }
 
 .wrapper {
@@ -40,7 +38,7 @@ body {
 .hero-bg {
 	background-image: url('../img/mobile/bg-image-daytime.jpg');
 	background-size: cover;
-	background-position: 0 100%;
+	background-position: center 100%;
 	background-repeat: no-repeat;
 	z-index: -6;
 }
