@@ -141,6 +141,7 @@ body {
 		}
 
 		&-period {
+			margin-bottom: 0.5em;
 			color: $white;
 			font-size: 1.5rem;
 			font-weight: 400;
@@ -272,10 +273,11 @@ body {
 			&-time {
 				font-size: 17.5rem;
 				letter-spacing: -4.5px;
+			}
 
-				span {
-					font-size: 3.2rem;
-				}
+			&-period {
+				margin-bottom: 0.7em;
+				font-size: 3.2rem;
 			}
 
 			&-city {
@@ -346,10 +348,10 @@ body {
 			&-time {
 				font-size: 20rem;
 				letter-spacing: -5px;
+			}
 
-				span {
-					font-size: 3.2rem;
-				}
+			&-period {
+				margin-bottom: 1em;
 			}
 
 			&-city {

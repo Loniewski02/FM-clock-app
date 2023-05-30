@@ -71,35 +71,30 @@ async function handleQuote() {
 	}
 }
 
-async function setTime() {
-	const response = await axios.get('https://worldtimeapi.org/api/ip');
-	const data = response.data;
-	try {
-		const currentTime = new Date(data.datetime);
+const setTime = () => {
+	const currentTime = new Date();
 
-		let hours = String(currentTime.getHours()).padStart(2, '0');
-		const minutes = String(currentTime.getMinutes()).padStart(2, '0');
+	let hours = String(currentTime.getHours()).padStart(2, '0');
+	const minutes = String(currentTime.getMinutes()).padStart(2, '0');
 
-		if (hours >= 5 && hours <= 10) {
-			body.classList.remove('night-theme', 'midday-theme', 'afternoon-theme');
-			body.classList.add('morning-theme');
-		} else if (hours > 10 && hours <= 15) {
-			body.classList.remove('night-theme', 'morning-theme', 'afternoon-theme');
-			body.classList.add('midday-theme');
-		} else if (hours > 15 && hours <= 18) {
-			body.classList.remove('night-theme', 'morning-theme', 'midday-theme');
-			body.classList.add('afternoon-theme');
-		} else if (hours > 18 || hours < 5) {
-			body.classList.remove('morning-theme', 'midday-theme', 'afternoon-theme');
-			body.classList.add('night-theme');
-		}
-
-		time.textContent = `${hours}:${minutes}`;
-		requestAnimationFrame(setTime);
-	} catch (error) {
-		console.error(error);
+	if (hours >= 5 && hours <= 10) {
+		body.classList.remove('night-theme', 'midday-theme', 'afternoon-theme');
+		body.classList.add('morning-theme');
+	} else if (hours > 10 && hours <= 15) {
+		body.classList.remove('night-theme', 'morning-theme', 'afternoon-theme');
+		body.classList.add('midday-theme');
+	} else if (hours > 15 && hours <= 18) {
+		body.classList.remove('night-theme', 'morning-theme', 'midday-theme');
+		body.classList.add('afternoon-theme');
+	} else if (hours > 18 || hours < 5) {
+		body.classList.remove('morning-theme', 'midday-theme', 'afternoon-theme');
+		body.classList.add('night-theme');
 	}
-}
+
+	requestAnimationFrame(setTime);
+
+	time.textContent = `${hours}:${minutes}`;
+};
 
 async function setTimezone() {
 	const response = await axios.get('https://worldtimeapi.org/api/ip');
@@ -131,6 +126,7 @@ async function setLocation() {
 		location.textContent = `${data.location.country.name}, ${data.location.country.alpha2}`;
 	} catch (error) {
 		console.error(error);
+		location.textContent = `earth`;
 	}
 }
 
