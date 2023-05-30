@@ -71,30 +71,59 @@ async function handleQuote() {
 	}
 }
 
-const setTime = () => {
-	const currentTime = new Date();
+async function setTime() {
+	const response = await axios.get('https://worldtimeapi.org/api/ip');
+	const data = response.data;
+	try {
+		const timezone = document.querySelector('.timezone');
+		const dayOfWeek = document.querySelector('.day-of-week');
+		const dayOfYear = document.querySelector('.day-of-year');
+		const week = document.querySelector('.week');
+		const periood = document.querySelector('.app__clock-period');
 
-	const hours = String(currentTime.getHours()).padStart(2, '0');
-	const minutes = String(currentTime.getMinutes()).padStart(2, '0');
+		const currentTime = new Date(data.datetime);
 
-	if (hours > 5 && hours < 19) {
-		body.classList.remove('night-theme');
-		body.classList.add('morning-theme');
-	} else {
-		body.classList.remove('morning-theme');
-		body.classList.add('night-theme');
+		const hours = String(currentTime.getHours()).padStart(2, '0');
+		const minutes = String(currentTime.getMinutes()).padStart(2, '0');
+
+		if (hours > 5 && hours < 19) {
+			body.classList.remove('night-theme');
+			body.classList.add('morning-theme');
+		} else {
+			body.classList.remove('morning-theme');
+			body.classList.add('night-theme');
+		}
+
+		time.textContent = `${hours}:${minutes}`;
+		requestAnimationFrame(setTime);
+
+		timezone.textContent = data.timezone;
+		dayOfWeek.textContent = data.day_of_week;
+		dayOfYear.textContent = data.day_of_year;
+		week.textContent = data.week_number;
+		periood.textContent = data.abbreviation;
+	} catch (error) {
+		console.error(error);
 	}
+}
 
-	time.textContent = `${hours}:${minutes}`;
-
-	requestAnimationFrame(setTime);
-};
+async function setLocation() {
+	const response = await axios.get('https://api.ipbase.com/v1/json/');
+	const data = response.data;
+	try {
+		const location = document.querySelector('.app__clock-city span');
+		location.textContent = `${data.country_name}, ${data.country_code}`;
+	} catch (error) {
+		console.error(error);
+	}
+}
 
 const main = () => {
 	prepareDOMElements();
 	prepareDOMEvents();
 	handleQuote();
 	setTime();
+	setLocation();
 };
 
 document.addEventListener('DOMContentLoaded', main);
