@@ -118,7 +118,7 @@ body {
 				text-transform: uppercase;
 				letter-spacing: 3px;
 
-				span {
+				&--second {
 					display: none;
 				}
 			}
@@ -262,7 +262,8 @@ body {
 				&-text {
 					font-size: 1.8rem;
 					letter-spacing: 3.6px;
-					span {
+
+					&--second {
 						display: inline-block;
 					}
 				}

@@ -72,6 +72,7 @@ async function handleQuote() {
 }
 
 const setTime = () => {
+	const greeting = document.querySelector('.app__clock-greeting-text--frist');
 	const currentTime = new Date();
 
 	let hours = String(currentTime.getHours()).padStart(2, '0');
@@ -80,15 +81,19 @@ const setTime = () => {
 	if (hours >= 5 && hours <= 10) {
 		body.classList.remove('night-theme', 'midday-theme', 'afternoon-theme');
 		body.classList.add('morning-theme');
+		greeting.textContent = 'good morning';
 	} else if (hours > 10 && hours <= 15) {
 		body.classList.remove('night-theme', 'morning-theme', 'afternoon-theme');
 		body.classList.add('midday-theme');
+		greeting.textContent = 'good morning';
 	} else if (hours > 15 && hours <= 18) {
 		body.classList.remove('night-theme', 'morning-theme', 'midday-theme');
 		body.classList.add('afternoon-theme');
+		greeting.textContent = 'Good afternoon';
 	} else if (hours > 18 || hours < 5) {
 		body.classList.remove('morning-theme', 'midday-theme', 'afternoon-theme');
 		body.classList.add('night-theme');
+		greeting.textContent = 'Good evening';
 	}
 
 	requestAnimationFrame(setTime);
@@ -111,6 +116,7 @@ async function setTimezone() {
 		dayOfYear.textContent = data.day_of_year;
 		week.textContent = data.week_number;
 		periood.textContent = data.abbreviation;
+		console.log(data);
 	} catch (error) {
 		console.error(error);
 	}
